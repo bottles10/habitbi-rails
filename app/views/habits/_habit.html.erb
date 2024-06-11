@@ -1,0 +1,31 @@
+<div class="relative w-full md:w-3/4 lg:w-1/2 p-5 bg-white text-gray-500 rounded-lg shadow-lg">
+  <div class="absolute top-0 right-0 md:left-0 transform -translate-x-3 -translate-y-3">
+    <awards-badge class="flex items-center space-x-1 text-xs">
+      <!-- <img src="/images/medal.png" alt="medal icon" width="30" oncontextmenu="return false;">
+					<img src="/images/trophy.png" alt="medal icon" width="30" oncontextmenu="return false;">
+					<img src="/images/trophy(2).png" alt="medal icon" width="30" oncontextmenu="return false;"> -->
+      <p class="p-1 bg-gray-400 text-gray-800 rounded">silver</p>
+      <p class="p-1 bg-yellow-400 text-yellow-800 rounded">gold</p>
+    </awards-badge>
+  </div>
+  <div class="pt-5 mb-5 md:flex items-center justify-between space-y-2 md:space-y-0">
+    <p class="text-gray-900 font-bold"><%= habit.name %></p>
+    <div class="flex space-x-2 text-white">
+      <%= button_to "-", "#", class: "py-1 px-3 font-extrabold rounded-lg shadow bg-red-300" %>
+      <p class="inline py-1 px-3 text-sm bg-yellow-300 text-yellow-600 rounded-full"><%= habit.count %> Days</p>
+      <%= button_to "+", "#", class: "py-1 px-3 font-extrabold rounded-lg shadow bg-green-300" %>
+    </div>
+  </div>
+  <div class="space-y-2">
+    <p class="text-xs md:text-sm"><%= habit.updated_at %></p>
+    <div class="bg-gray-200 rounded-full">
+      <div class="w-2/5 p-2 bg-green-500 rounded-l-lg"></div>
+    </div>
+    <action-buttons class="flex justify-end space-x-4">
+		<%= link_to "edit", edit_habit_path(habit) %>
+		<%= button_to "delete", habit_path(habit), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+     <!--  <i class="fa-solid fa-pen-to-square"></i>
+      <i class="fa-solid fa-trash"></i> -->
+    </action-buttons>
+  </div>
+</div>
