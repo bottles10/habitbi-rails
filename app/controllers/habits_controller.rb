@@ -3,7 +3,7 @@ class HabitsController < ApplicationController
 
 
   def index
-    @habits = Habit.all
+    @habits = Habit.all.ordered
     @habit = Habit.new
   end
 
@@ -44,6 +44,7 @@ class HabitsController < ApplicationController
     @habit.destroy
       respond_to do |format|
         format.html { redirect_to habits_path, notice: "Habit was successfully destroyed!." }
+        format.turbo_stream { flash.now[:notice] = "Habit wa successfully destroyed!." }
       end
     end
 
