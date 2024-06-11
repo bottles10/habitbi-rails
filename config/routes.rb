@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root 'habits#index'
   get 'welcome/home'
-  resources :habits
+  resources :habits do
+    member do
+      post :plus
+      post :minus
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

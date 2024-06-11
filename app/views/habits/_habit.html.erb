@@ -13,15 +13,19 @@
   <div class="pt-5 mb-5 md:flex items-center justify-between space-y-2 md:space-y-0">
     <p class="text-gray-900 font-bold"><%= habit.name %></p>
     <div class="flex space-x-2 text-white">
-      <%= button_to "-", "#", class: "py-1 px-3 font-extrabold rounded-lg shadow bg-red-300" %>
-      <p class="inline py-1 px-3 text-sm bg-yellow-300 text-yellow-600 rounded-full"><%= habit.count %> Days</p>
-      <%= button_to "+", "#", class: "py-1 px-3 font-extrabold rounded-lg shadow bg-green-300" %>
+      <%= button_to "-", minus_habit_path(habit), class: "py-1 px-3 font-extrabold rounded-lg shadow bg-red-300" %>
+			<div class="py-1 px-3 text-sm bg-yellow-300 text-yellow-600 rounded-full">
+      	<p id="habit-counter"><%= habit.count %> Days</p>
+			</div>
+      <%= button_to "+", plus_habit_path(habit), class: "py-1 px-3 font-extrabold rounded-lg shadow bg-green-300" %>
     </div>
   </div>
   <div class="space-y-2">
-    <p class="text-xs md:text-sm"><%= format_date(habit.updated_at) %></p>
-    <div class="bg-gray-200 rounded-full">
-      <div class="w-2/5 p-2 bg-green-500 rounded-l-lg"></div>
+		<div class="text-xs md:text-sm">
+    	<p id="time-update">last updated: <%= format_date(habit.updated_at) %></p>
+		</div>
+    <div class="px-1 bg-gray-200 rounded-full">
+		<%= render 'habit_streak_markers', habit: habit %>
     </div>
     <action-buttons class="flex justify-end space-x-4">
 		<%= link_to "edit", edit_habit_path(habit) %>

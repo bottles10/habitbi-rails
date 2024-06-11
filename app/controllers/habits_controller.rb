@@ -1,5 +1,5 @@
 class HabitsController < ApplicationController
-  before_action :set_habit, only: %i[ show edit update destroy]
+  before_action :set_habit, only: %i[ show edit update destroy plus minus ]
 
 
   def index
@@ -42,11 +42,24 @@ class HabitsController < ApplicationController
 
   def destroy
     @habit.destroy
-      respond_to do |format|
-        format.html { redirect_to habits_path, notice: "Habit was successfully destroyed!." }
-        format.turbo_stream { flash.now[:notice] = "Habit wa successfully destroyed!." }
-      end
+
+    respond_to do |format|
+      format.html { redirect_to habits_path, notice: "Habit was successfully destroyed!." }
+      format.turbo_stream { flash.now[:notice] = "Habit wa successfully destroyed!." }
     end
+  end
+
+  def plus
+    @habit.update(count: @habit.count + 1)
+    render :result
+  end
+
+  def minus
+    @habit.update(count: @habit.count - 1)
+    render :result
+  end
+    
+
 
 
   private
