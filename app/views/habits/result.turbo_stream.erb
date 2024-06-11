@@ -1,9 +1,9 @@
-<%= turbo_stream.replace 'habit-counter' do %>
-  <p id="habit-counter"><%= @habit.count %> Days</p>
+<%= turbo_stream.replace dom_id(@habit, 'habit_counter') do %>
+  <p id="<%= dom_id(@habit, 'habit_counter') %>"><%= @habit.count %> Days</p>
 <% end %>
-<%= turbo_stream.replace 'time-update' do %>
-  <p id="time-update">last updated: <%= format_date(@habit.updated_at) %></p>
+<%= turbo_stream.replace dom_id(@habit, 'time_update') do %>
+  <p id="<%= dom_id(@habit, 'time_update') %>">last updated: <%= format_date(@habit.updated_at) %></p>
 <% end %>
-<%= turbo_stream.replace 'habit-markers' do %>
+<%= turbo_stream.replace dom_id(@habit, 'habit_markers') do %>
   <%= render 'habit_streak_markers', habit: @habit %>
 <% end %>

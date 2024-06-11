@@ -15,14 +15,14 @@
     <div class="flex space-x-2 text-white">
       <%= button_to "-", minus_habit_path(habit), class: "py-1 px-3 font-extrabold rounded-lg shadow bg-red-300" %>
 			<div class="py-1 px-3 text-sm bg-yellow-300 text-yellow-600 rounded-full">
-      	<p id="habit-counter"><%= habit.count %> Days</p>
+      	<p id="<%= dom_id(habit, 'habit_counter') %>"><%= habit.count %> Days</p>
 			</div>
       <%= button_to "+", plus_habit_path(habit), class: "py-1 px-3 font-extrabold rounded-lg shadow bg-green-300" %>
     </div>
   </div>
   <div class="space-y-2">
 		<div class="text-xs md:text-sm">
-    	<p id="time-update">last updated: <%= format_date(habit.updated_at) %></p>
+    	<p id="<%= dom_id(habit, 'time_update') %>">last updated: <%= format_date(habit.updated_at) %></p>
 		</div>
     <div class="px-1 bg-gray-200 rounded-full">
 		<%= render 'habit_streak_markers', habit: habit %>
