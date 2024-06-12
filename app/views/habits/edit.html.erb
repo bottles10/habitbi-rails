@@ -2,7 +2,7 @@
   <div class="w-full md:w-3/4 lg:w-1/2 space-y-4">
     <h2 class="text-2xl md:text-4xl font-bold">Edit <%= @habit.name %></h2>
     <%= turbo_frame_tag @habit do %>
-    <%= link_to "Cancel", habits_path, class: "mb-8 inline-block py-2 px-6 bg-gray-100 text-gray-600 rounded-lg shadow" %>
+    <%= link_to sanitize("&larr; Cancel"), habits_path, class: "mb-8 inline-block py-2 px-6 text-center bg-gray-100 text-gray-600 rounded-lg shadow" %>
     <%= render 'form', habit: @habit %>
     <% end %>
   </div>

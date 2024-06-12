@@ -23,7 +23,7 @@ class HabitsController < ApplicationController
         format.html { redirect_to habits_path, notice: "Habit was successfully create!." }
         format.turbo_stream { flash.now[:notice] = "Habit was successfully create!," }
       else
-        render :new, status: :unprocessable_entity
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
