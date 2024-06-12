@@ -1,2 +1,7 @@
-<%#= turbo_stream.prepend 'habits', @habit %>
+<!-- replace the form with empty form -->
+<%= turbo_stream.replace @habit do %>
+  <%= render 'form', habit: Habit.new %>
+<% end %>
+
+<%= turbo_stream.prepend 'habits', @habit %>
 <%= render_turbo_stream_flash_messages %>
