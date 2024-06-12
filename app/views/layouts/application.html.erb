@@ -11,8 +11,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5">
+  <body class="font-serif bg-gradient-to-br from-pink-50 via-purple-100 to-gray-100">
+    <%= render 'layouts/header' %>
+    <div id="flash_message">
+      <%= render 'layouts/flashes' %>
+    </div>
+    <main class="container mx-auto py-10 px-5">
       <%= yield %>
     </main>
   </body>

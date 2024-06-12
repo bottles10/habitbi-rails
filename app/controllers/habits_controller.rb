@@ -34,9 +34,10 @@ class HabitsController < ApplicationController
 
       respond_to do |format|
         format.html { redirect_to habits_path, notice: "Habit was successfully updated!." }
+        format.turbo_stream { flash.now[:notice] = "Habit was successfully updated!." }
       end
     else
-      render :edit, status: :unprocessable_entit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -45,7 +46,7 @@ class HabitsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to habits_path, notice: "Habit was successfully destroyed!." }
-      format.turbo_stream { flash.now[:notice] = "Habit wa successfully destroyed!." }
+      format.turbo_stream { flash.now[:notice] = "Habit was successfully destroyed!." }
     end
   end
 
