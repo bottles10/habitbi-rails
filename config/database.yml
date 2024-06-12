@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: habitbi_production
-  username: habitbi
-  password: <%= ENV["HABITBI_DATABASE_PASSWORD"] %>
+  url: Rails.application.credentials.DATABASE_URL
