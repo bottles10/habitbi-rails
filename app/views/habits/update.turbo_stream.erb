@@ -1,2 +1,2 @@
-<%= turbo_stream.replace @habit %>
+<%= turbo_stream.prepend "habits", @habit %>
 <%= render_turbo_stream_flash_messages %>
