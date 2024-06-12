@@ -1,21 +1,22 @@
 class HabitsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_habit, only: %i[ show edit update destroy plus minus ]
 
 
   def index
-    @habits = Habit.all.ordered
-    @habit = Habit.new
+    @habits = current_user.habits.ordered
+    @habit = current_user.habits.build
   end
 
   def show
   end
 
   def new
-    @habit = Habit.new
+    @habit = current_user.habits.build
   end
 
   def create
-    @habit = Habit.new(habit_params)
+    @habit = current_user.habits.build(habit_params)
 
     respond_to do |format|
       if @habit.save
@@ -67,7 +68,7 @@ class HabitsController < ApplicationController
   private
 
   def set_habit
-    @habit = Habit.find(params[:id])
+    @habit = current_user.habits.find(params[:id])
   end
 
   def habit_params

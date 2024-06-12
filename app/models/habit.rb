@@ -1,4 +1,7 @@
 class Habit < ApplicationRecord
+    belongs_to :user, counter_cache: :habits_count, touch: true
+
+    
     validates :name, presence: true
     validates :count, presence: true
 
