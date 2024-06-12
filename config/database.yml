@@ -79,4 +79,4 @@ test:
 #
 production:
   <<: *default
-  url: Rails.application.credentials.DATABASE_URL
+  url: <%= Rails.application.credentials.dig(:database_url) %>
