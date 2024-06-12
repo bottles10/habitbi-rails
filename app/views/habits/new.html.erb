@@ -1,2 +1,4 @@
 <h2 class="mb-4 text-2xl md:text-4xl font-bold text-center">Create new habit</h2>
+<%= turbo_frame_tag "new_habit" do %>
 <%= render 'form', habit: @habit %>
+<% end %>
