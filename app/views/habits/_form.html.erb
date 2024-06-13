@@ -1,6 +1,8 @@
 <%= form_with(model: habit, class: "w-full") do |form| %>
   <% if habit.errors.any? %>
-    <p class="pb-2 text-sm font-bold text-center text-rose-500 animate-bounce"><%= habit.errors.full_messages.to_sentence %></p>
+    <div class="mb-2 w-1/2 mx-auto bg-rose-200 rounded">
+      <p class="p-2 text-sm font-bold text-center text-rose-500 animate-pulse"><%= habit.errors.full_messages.to_sentence %></p>
+    </div>
   <% end %>
   <div class="flex justify-center">
     <%= form.text_field :name, placeholder: "eg: Read Everyday", class: "w-2/3 text-center text-sm focus:border-pink-400 focus:ring-0 border border-pink-400 caret-pink-500 rounded-l-2xl" %>
