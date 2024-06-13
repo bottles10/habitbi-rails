@@ -26,11 +26,14 @@
       <div class="px-1 bg-gray-200 rounded-full">
         <%= render 'habit_streak_markers', habit: habit %>
       </div>
-      <action-buttons class="flex justify-end space-x-4">
-        <%= link_to "edit", edit_habit_path(habit) %>
-        <%= button_to "delete", habit_path(habit), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-        <!--  <i class="fa-solid fa-pen-to-square"></i>
-      <i class="fa-solid fa-trash"></i> -->
+      <action-buttons class="!mt-7 flex justify-end space-x-4">
+        <%= link_to edit_habit_path(habit) do %>
+          <%= heroicon "pencil-square" %>
+          <% end %>
+        <%= button_to habit_path(habit), method: :delete, data: { turbo_confirm: "Are you sure?" } do %>
+          <%= heroicon "trash" %>
+          <% end %>
+       
       </action-buttons>
     </div>
   </div>
